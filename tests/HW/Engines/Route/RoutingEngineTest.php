@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\HW\Route\Engine;
+namespace Tests\HW\Engines\Route;
 
 
 use PHPUnit\Framework\TestCase;
-use HW\Route\Engine\RoutingEngineInterface;
-use HW\Route\Engine\RoutingEngine;
+use HW\Engines\Route\RoutingEngineInterface;
+use HW\Engines\Route\RoutingEngine;
 
 
 class RoutingEngineTest extends TestCase

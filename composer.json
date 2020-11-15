@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "HW\\Route\\Engine\\": "src/HW/Route/Engine/"
+            "HW\\Engines\\Route\\": "src/HW/Engines/Route/"
         }
     },
     "autoload-dev": {
