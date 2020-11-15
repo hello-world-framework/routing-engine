@@ -1,0 +1,31 @@
+{
+    "name": "hello-world-framework/routing-engine",
+    "type": "project",
+    "description": "Routing Engine for the HelloWorld Framework",
+    "keywords": [
+        "routing-engine",
+        "route",
+        "routing",
+        "engine",
+        "hello-world-framework"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "HW\\Route\\Engine\\": "src/HW/Route/Engine/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

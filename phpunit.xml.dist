@@ -1,0 +1,17 @@
+<phpunit
+    bootstrap="./vendor/autoload.php"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    verbose="true"
+    stopOnFailure="false"
+    processIsolation="false"
+    backupGlobals="false"
+>
+    <testsuites>
+        <testsuite name="hello-world-framework-routing-engine-test">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
