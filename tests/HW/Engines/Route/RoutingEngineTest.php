@@ -18,17 +18,13 @@ class RoutingEngineTest extends TestCase
 
     public function testResolve()
     {
-        // notice, all the routes are written cleanly
-        //         i.e. no route is prefixed with a "/"
-        //         routing-engine assumes all the routes
-        //         are cleaned already
         $routes = [
             "GET" => [
-                "users" => [
+                "users/" => [
                     "name" => "users.all",
                     "target" => ["users", "index"]
                 ],
-                "api/users/{id}" => [
+                "/api/users/{id}" => [
                     "name" => "users.show",
                     "target" => ["api.users", "show"],
                     "filter" => [
@@ -51,7 +47,7 @@ class RoutingEngineTest extends TestCase
 
         $routingEngine = new RoutingEngine($routes);
 
-        $uri = "api/users/1234";
+        $uri = "/api/users/1234";
         $expected = [
             "controller" => ["api.users", "show"],
             "params" => ["1234"]
@@ -66,7 +62,7 @@ class RoutingEngineTest extends TestCase
         
         // this would return null for this path
         // cause, 2wab contains char, but [0-9]+ is used as filter
-        $uri = "api/users/2wab";
+        $uri = "/api/users/2wab/";
         $ret = $routingEngine->resolve("GET", $uri);
         $this->assertEquals($ret, null);
 

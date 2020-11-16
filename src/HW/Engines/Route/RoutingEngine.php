@@ -12,6 +12,20 @@ class RoutingEngine implements RoutingEngineInterface
         $this->routes = $routes;
     }
 
+    private function filterUri($uri)
+    {
+        $uri = trim($uri);
+        $len = strlen($uri);
+        if($len > 0 && $uri[$len-1] === "/") {
+            $uri = substr($uri, 0, $len-1);
+            $len--;
+        }
+        if($len > 0 && $uri[0] === "/") {
+            $uri = substr($uri, 1);
+        }
+        return $uri;
+    }
+
     private function parse($uri, $opt)
     {
         $toks = explode("/", $uri);
@@ -78,11 +92,9 @@ class RoutingEngine implements RoutingEngineInterface
     public function resolve($method, $reqUri)
     {
         $method = strtoupper($method);
-        
-        $reqUri = explode("/", $reqUri);
-        
+        $reqUri = explode("/", $this->filterUri($reqUri));
         foreach($this->routes[$method] as $uri => $opt) {
-            $uri = $this->parse($uri, $opt);
+            $uri = $this->parse($this->filterUri($uri), $opt);
             $params = $this->match($uri, $reqUri);
             if($params !== false) {
                 return [
